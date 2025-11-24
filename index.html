@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siham ASSIKI - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: rgb(235, 235, 243);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+      .hero-text {
+    flex: 1;
+    min-width: 300px;
+    color: #1a365d; /* bleu foncé, visible sur fond clair */
+    animation: slideInLeft 1s ease-out;
+}
+
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #1a365d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-image {
+       .profile-img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 30%;
+ /* centre parfaitement le visage */
+    border: 8px solid white;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+}
+ 
+}
+
+
+
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #1a365d;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(26, 54, 93, 0.2);
+        }
+
+        .about-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-card p {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #1a365d;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #1a365d;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #1a365d;
+        }
+
+        .timeline-item h3 {
+            color: #1a365d;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #333;
+        }
+
+        .timeline-date {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(26, 54, 93, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1a365d 0%, #2c5282 100%);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(26, 54, 93, 0.2);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #1a365d;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Certifications */
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #1a365d;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item h3 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-item p {
+            color: #333;
+        }
+
+        .cert-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 25px rgba(26, 54, 93, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(26, 54, 93, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #2c5282;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #1a365d;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        /* Général pour toutes les sections compétences */
+.section {
+    margin-bottom: 50px;
+    padding: 2rem;
+    background: #f8f9fa; /* Fond léger */
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* Titres des sections */
+.section h2 {
+    font-size: 2rem;
+    color: #1a365d; /* Bleu foncé assorti au thème */
+    
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Liste des compétences */
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem 2rem;
+}
+
+/* Items de la liste */
+.skills-list li {
+    background: white;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol des items */
+.skills-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Petite puce personnalisée */
+.skills-list li::before {
+    content: "✓"; /* coche pour moderniser */
+    color: #1a365d;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Adaptation responsive */
+@media (max-width: 768px) {
+    .skills-list {
+        grid-template-columns: 1fr; /* liste en colonne sur mobile */
+    }
+
+    .section h2 {
+        font-size: 1.6rem;
+    }
+}
+.cert-img {
+    width: 100%;
+    max-width: 150px; /* ou la taille souhaitée */
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À Propos</a></li>
+            <li><a href="#formation">Formation</a></li>
+            <li><a href="#experiences">Expériences</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>SIHAM ASSIKI</h1>
+                <h2>Ingénieure de Formation & Digital Learning</h2>
+                <p>Étudiante en Master 2, passionnée par la conception de dispositifs de formation innovants et la transformation digitale de l'apprentissage.</p>
+                <a href="#contact" class="cta-button">Me Contacter</a>
+            </div>
+            <div class="hero-image">
+ <img src="photo cv f.jpg" alt="Siham ASSIKI" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos">
+        <h2>À Propos</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Profil</h3>
+                <p>Étudiante en 2ème année de Master en Ingénierie de Formation et Digital Learning à l'École Supérieure de l'Éducation et de la Formation (ESEF) de Berrechid.</p>
+            </div>
+            <div class="about-card">
+                <h3>Objectif</h3>
+                <p>Recherche activement un stage de fin d'études (PFE) pour contribuer à la conception, au déploiement et à l'évaluation de dispositifs de formation innovants.</p>
+            </div>
+            <div class="about-card">
+                <h3>Expertise</h3>
+                <p>Spécialisée en ingénierie pédagogique, e-learning, conception de contenus digitaux et évaluation des formations en ligne.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation">
+        <h2>Formation Académique</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Master en Ingénierie de Formation et Digital Learning</h3>
+                <p class="timeline-date">2024 - 2026</p>
+                <p class="timeline-location">École Supérieure de l'Éducation et de la Formation (ESEF) - Berrechid</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Licence en Éducation - Enseignement Secondaire</h3>
+                <p class="timeline-date">2022 - 2024</p>
+                <p class="timeline-location">École Normale Supérieure (ENS) - Marrakech</p>
+                <p>Spécialité: Langue Française</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Baccalauréat en Lettres et Sciences Humaines</h3>
+                <p class="timeline-date">2019 - 2021</p>
+                <p class="timeline-location">Lycée Qualifiant Almajed Smimou - Essaouira</p>
+                <p><strong>Mention Très Bien</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiences">
+        <h2>Expériences Professionnelles</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Ingénieure de Formation et Digital Learning - Stagiaire</h3>
+                <p class="timeline-date">Juillet 2025 - Septembre 2025</p>
+                <p class="timeline-location">Institut POLY POLE Des Formations - Agadir</p>
+                <p>Conception et déploiement de formations en ligne pour le personnel administratif</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Concepteur Pédagogique - Stagiaire</h3>
+                <p class="timeline-date">Septembre 2024</p>
+                <p class="timeline-location">Académie Régionale de l'Éducation et de la Formation (AREF) Souss Massa - Agadir</p>
+                <p>Analyse et conception de plateformes e-learning régionales</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Enseignante - Stagiaire</h3>
+                <p class="timeline-date">2023 - 2024</p>
+                <p class="timeline-location">Lycée collégial Moulay Rachid - Marrakech</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Enseignante - Stagiaire</h3>
+                <p class="timeline-date">2022 - 2023</p>
+                <p class="timeline-location">Lycée qualifiant Cadi Ayyad - Marrakech</p>
+            </div>
+        </div>
+    </section>
+
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Siham Assiki</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* FOND BLANC */
+            margin: 0;
+            padding: 20px;
+        }
+
+       h2 {
+    color: #002147; /* BLEU FONCÉ */
+    border-left: 4px solid #002147;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        p, li {
+            color: #000000; /* TEXTE NOIR */
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .skills-list {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h2>Compétences Techniques et Outils Numériques</h2>
+        <ul class="skills-list">
+            <li>Suite Microsoft Office</li>
+            <li>Suite Google</li>
+            <li>Outils numériques : Storyline 360, Moodle, Canva, Genially, Animaker, Lumen5, Pictory AI, H5P, Kahoot, Openshot, Shotcut...</li>
+            <li>Développement web : HTML, CSS, JavaScript, PHP</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Compétences en Ingénierie de Formation</h2>
+        <ul class="skills-list">
+            <li>Analyse des besoins en formation</li>
+            <li>Conception pédagogique (ingénierie pédagogique)</li>
+            <li>Élaboration de storyboards</li>
+            <li>Création de contenus e-learning (vidéos animées, quiz interactifs)</li>
+            <li>Évaluation des dispositifs de formation en ligne</li>
+            <li>Digitalisation de parcours de formation</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Compétences Comportementales (Soft Skills)</h2>
+        <ul class="skills-list">
+            <li>Communication efficace</li>
+            <li>Travail en équipe</li>
+            <li>Écoute active</li>
+            <li>Adaptabilité</li>
+            <li>Sens de l'organisation</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Langues</h2>
+        <ul class="skills-list">
+            <li>Français — Avancé</li>
+            <li>Anglais — Intermédiaire</li>
+            <li>Arabe / Amazighe — Langue maternelle</li>
+        </ul>
+    </div>
+
+</body>
+</html>
+
+    <section id="projets">
+        <h2>Projets Réalisés</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Plateforme E-Learning Régionale</h3>
+                    <p>Analyse et conception d'une plateforme régionale de e-learning pour l'Académie Régionale de l'Éducation et de la Formation (AREF) Souss Massa.</p>
+                    <span class="project-tag">Analyse</span>
+                    <span class="project-tag">Conception</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Formation en Ligne Asynchrone</h3>
+                    <p>Ingénierie et mise en œuvre d'une formation en ligne destinée aux secrétaires de l'institut POLY POLE: conception, évaluation et déploiement digital.</p>
+                    <span class="project-tag">E-Learning</span>
+                    <span class="project-tag">Évaluation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Vidéos Pédagogiques</h3>
+                    <p>Conception de 20 vidéos pédagogiques e-learning avec élaboration de storyboards détaillés et traitement audio professionnel.</p>
+                    <span class="project-tag">Production</span>
+                    <span class="project-tag">Multimédia</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Dispositif Blended Learning</h3>
+                    <p>Conception d'un dispositif de formation en blended learning avec méthodologie de recherche approfondie.</p>
+                    <span class="project-tag">Innovation</span>
+                    <span class="project-tag">Hybride</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Étude Comparative - Ingénierie</h3>
+                    <p>Projet académique portant sur une étude comparative des fiches de poste en ingénierie de formation et
+ digital learning, fondée sur les référentiels professionnels de l’UM6P et de YOOL</p>
+                    <span class="project-tag">Recherche</span>
+                    <span class="project-tag">Analyse</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-list">
+        <div class="cert-item">
+            <img src="ia  .jpg" alt="Badge Intelligence Artificielle" class="cert-img">
+            <h3>Intelligence Artificielle</h3>
+            <p>Badge en IA pour et par les enseignants</p>
+        </div>
+        <div class="cert-item">
+            <img src="iso cer.jpg" alt="Certificat ISO 9001" class="cert-img">
+            <h3>ISO 9001</h3>
+            <p>Certificat en normes de qualité ISO 9001</p>
+        </div>
+        <div class="cert-item">
+            <img src="certificat 365 science.jpg" alt="Certificat AI Agents" class="cert-img">
+            <h3>AI Agents</h3>
+            <p>Introduction to AI Agents and Agentic AI</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="contact">
+        <h2>Me Contacter</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p><a href="mailto:assikisiham@gmail.com">assikisiham@gmail.com</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Téléphone</h3>
+                <p><a href="tel:+212688974868">+212 688 974 868</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Localisation</h3>
+                <p>Berrechid, Maroc</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Siham ASSIKI - Portfolio Professionnel | Ingénieure de Formation & Digital Learning</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
